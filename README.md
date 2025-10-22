@@ -1,17 +1,37 @@
-# Portfolio Website (Express + EJS)
+# Portfolio Website
 
-This repo is a conversion of a static portfolio site into an Express + EJS project.
+A modern portfolio website built with Express.js and EJS templating, featuring a dark theme and interactive elements.
 
-Quick start (Windows PowerShell):
+## Overview
+
+This repo contains a full-stack portfolio website converted from a static site to use Express.js and EJS templating. It features a responsive design, animated particles, and a contact form.
+
+## Quick Start (Windows PowerShell)
 
 ```powershell
-cd "d:\web\portfolio website extra"
+# Clone the repository
+git clone https://github.com/sandeepky567/portfolio.git
+cd portfolio
+
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 ```
 
 Open http://localhost:3000 in your browser.
 
-Notes:
-- Static assets are served from `/assets` (original images) and `/styles.css` is served from the `public/` folder.
-- The contact form posts to `/contact` and currently only logs to the server and redirects back with a simulated success.
+## Features
+
+- Dark theme with animated particles background
+- Responsive design using Tailwind CSS
+- Interactive sections for About, Projects, and Contact
+- Contact form with client-side validation
+- Static asset serving for images and styles
+
+## Technical Notes
+
+- Built with Express.js and EJS templates
+- Static assets served from `/assets` (images) and `/styles.css` (public folder)
+- Contact form posts to `/contact` endpoint (currently simulated)
