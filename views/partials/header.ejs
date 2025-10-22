@@ -1,0 +1,48 @@
+<%
+  // Ensure `page` is defined so header can be included from any view
+  var currentPage = (typeof page !== 'undefined') ? page : '';
+%>
+
+<nav>
+  <a class="logo" href="/">SANDEEP KUMAR</a>
+  <ul class="nav-links">
+    <li><a href="/about" class="<%= currentPage === 'about' ? 'active' : '' %>">About</a></li>
+    <li><a href="/projects" class="<%= currentPage === 'projects' ? 'active' : '' %>">Projects</a></li>
+    <li><a href="/contact" class="<%= currentPage === 'contact' ? 'active' : '' %>">Contact</a></li>
+  </ul>
+</nav>
+
+<aside class="left-icons" aria-label="Quick links">
+  <ul>
+    <li>
+      <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <span class="icon-frame"><img class="icon-img" src="/assets/github.png" alt="GitHub logo"></span>
+        <span class="sr">GitHub</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.hackerrank.com/" target="_blank" rel="noopener noreferrer" aria-label="HackerRank">
+        <span class="icon-frame"><img class="icon-img" src="/assets/hackerrank.png" alt="HackerRank logo"></span>
+        <span class="sr">HackerRank</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://leetcode.com/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+        <span class="icon-frame"><img class="icon-img" src="/assets/leetcode.jpg" alt="LeetCode logo"></span>
+        <span class="sr">LeetCode</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <span class="icon-frame"><img class="icon-img" src="/assets/linkedin.png" alt="LinkedIn logo"></span>
+        <span class="sr">LinkedIn</span>
+      </a>
+    </li>
+    <li>
+      <a href="/contact" aria-label="Contact">
+        <span class="icon-frame"><img class="icon-img" src="/assets/contact.png" alt="Contact icon"></span>
+        <span class="sr">Contact</span>
+      </a>
+    </li>
+  </ul>
+</aside>

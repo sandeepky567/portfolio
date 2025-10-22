@@ -1,0 +1,384 @@
+</%- include('partials/head', { title: 'Projects - Sandeep Kumar' }) %>
+<%- include('partials/header', { page: 'projects' }) %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Projects - Sandeep Kumar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body {
+      padding-top: 1rem;
+    }
+
+    /* Navbar Styling */
+    nav {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      height: var(--nav-height);
+    }
+
+    nav .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, var(--primary-color), #60a5fa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    nav .nav-links a:hover {
+      color: var(--primary-color);
+      background: rgba(74, 222, 128, 0.1);
+    }
+
+    nav .nav-links a.active {
+      color: var(--primary-color);
+      background: rgba(74, 222, 128, 0.15);
+    }
+
+    /* Project-specific styles */
+    nav {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    nav .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    nav .nav-links a:hover {
+      color: var(--primary-color);
+      background: rgba(74, 222, 128, 0.1);
+    }
+
+    nav .nav-links a.active {
+      color: var(--primary-color);
+      background: rgba(74, 222, 128, 0.15);
+    }
+
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 8s infinite ease-in-out;
+      opacity: 0.6;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      25% { transform: translateY(-30px) translateX(10px); }
+      50% { transform: translateY(-60px) translateX(-10px); }
+      75% { transform: translateY(-30px) translateX(5px); }
+    }
+
+    /* Dark theme text and card styles */
+    .text-header-dark { color: #fff !important; }
+    .text-gray-600, .text-gray-500 { color: var(--secondary-color) !important; }
+    .text-accent { color: var(--primary-color) !important; }
+        
+    /* Project cards dark theme */
+    .bg-white {
+      background: var(--card-bg) !important;
+      border: 1px solid var(--border-color) !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+    }
+    .bg-white:hover {
+      border-color: rgba(74,222,128,0.22) !important;
+      transform: translateY(-6px) !important;
+    }
+        
+    /* Text colors */
+    .text-gray-700, .project-details li { color: var(--secondary-color) !important; }
+    h4.text-3xl { color: var(--primary-color) !important; }
+    .border-gray-100, .border-gray-300 { border-color: var(--border-color) !important; }
+        
+    /* Buttons */
+    .bg-accent {
+      background: linear-gradient(to right, #007bff, var(--primary-color)) !important;
+      color: var(--bg-dark) !important;
+    }
+    .bg-header-dark {
+      background: var(--card-bg) !important;
+      color: var(--primary-color) !important;
+      border: 1px solid var(--border-color) !important;
+    }
+        
+    /* Image container */
+    .bg-gray-100 {
+      background: var(--card-bg) !important;
+      border: 1px solid var(--border-color) !important;
+    }
+        
+    /* Project details */
+    .project-details strong {
+      color: var(--code-highlight) !important;
+    }
+        
+    @media (max-width: 768px) {
+      body {
+        padding-left: 1rem;
+        padding-top: 5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Particles Background -->
+  <div class="particles" id="particles"></div>
+    
+  <nav>
+    <a class="logo" href="/">SANDEEP KUMAR</a>
+    <ul class="nav-links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/projects" class="active">Projects</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Left icon bar (same as dashboard) -->
+  <aside class="left-icons" aria-label="Quick links">
+    <ul>
+      <li>
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <span class="icon-frame"><img class="icon-img" src="/assets/github.png" alt="GitHub logo"></span>
+          <span class="sr">GitHub</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.hackerrank.com/" target="_blank" rel="noopener noreferrer" aria-label="HackerRank">
+          <span class="icon-frame"><img class="icon-img" src="/assets/hackerrank.png" alt="HackerRank logo"></span>
+          <span class="sr">HackerRank</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://leetcode.com/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+          <span class="icon-frame"><img class="icon-img" src="/assets/leetcode.jpg" alt="LeetCode logo"></span>
+          <span class="sr">LeetCode</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <span class="icon-frame"><img class="icon-img" src="/assets/linkedin.png" alt="LinkedIn logo"></span>
+          <span class="sr">LinkedIn</span>
+        </a>
+      </li>
+      <li>
+        <a href="/contact" aria-label="Contact">
+          <span class="icon-frame"><img class="icon-img" src="/assets/contact.png" alt="Contact icon"></span>
+          <span class="sr">Contact</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Projects content injected from Tailwind-based template -->
+  <main class="projects container">
+    <div id="app" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header/Introduction Section -->
+      <div class="pt-8 pb-12">
+        <h1 class="text-6xl sm:text-7xl font-black mb-6 text-header-dark leading-tight tracking-tight">
+          My Development <span class="text-accent bg-gradient-to-r from-primary-500 to-accent bg-clip-text">Journey</span>
+        </h1>
+        <p class="text-lg text-gray-600 max-w-2xl mt-4 leading-relaxed">
+          Each project represents a milestone in my development journey, showcasing growth and mastery over different technologies and concepts.
+        </p>
+      </div>
+
+      <!-- Project List Section -->
+      <section id="project-list" class="pb-20">
+        <div id="projects-grid" class="space-y-12"></div>
+      </section>
+    </div>
+
+    <!-- Tailwind CDN (kept local theme via our CSS but Tailwind used for quick layout) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: { 'accent': '#8a63d2', 'header-dark': '#212529' }
+          }
+        }
+      }
+    </script>
+
+    <script>
+      const projectsData = [
+        {
+          title: "BookMyHotel: Hotel Booking Web Application",
+          date: "July - Oct 2025",
+          summary: "A full-stack hotel booking platform built using the MERN stack with a clean MVC architecture.",
+          details: [
+            "Developed a full-stack application using **Node.js, Express.js, MongoDB, and JavaScript** stack, implementing a clean **MVC architecture**.",
+            "Engineered robust **CRUD functionality** for property listings, complemented by comprehensive **User Authentication and Authorization** features (login/signup, host/guest roles).",
+            "Designed optimized MongoDB queries for multi-parameter search.",
+            "Integrated **Cloudinary** for scalable asset delivery and **TailwindCSS** for a responsive UI."
+          ],
+          tags: ["Node.js", "Express.js", "MongoDB", "JavaScript", "MVC", "Cloudinary", "Tailwind CSS"],
+          liveUrl: "#",
+          githubUrl: "#",
+          imageUrl: "https://placehold.co/150x150/f9fafb/6b7280?text=BookMyHotel+UI"
+        },
+        {
+          title: "EasyEMI: Financial Calculation and Loan Management Utility",
+          date: "Sept 2025",
+          summary: "A specialized financial utility for high-accuracy EMI calculation and core loan management.",
+          details: [
+            "Engineered a specialized financial utility for high-accuracy **EMI calculation** and core **loan amortization**.",
+            "Organized features modularly for planning and refinancing.",
+            "Designed a user-centric UI and integrated an **EasyEMI Bot** to provide immediate support and enhance the overall loan exploration experience.",
+            "The core utility was developed in a 12-hour sprint, implementing financial formulas and a modular, component-based frontend architecture."
+          ],
+          tags: ["JavaScript", "HTML5", "CSS3", "Financial Formulas", "AI/Bot Integration", "Responsive Design"],
+          liveUrl: "#",
+          githubUrl: "#",
+          imageUrl: "https://placehold.co/150x150/f9fafb/6b7280?text=EMI+Dashboard"
+        }
+      ];
+
+      function renderProjects() {
+        const grid = document.getElementById('projects-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        projectsData.forEach(project => {
+          const tagHtml = project.tags.map(tag => `<span class="text-xs text-gray-500 mr-3 mt-1 inline-block">${tag}</span>`).join(' • ');
+          const detailsHtml = project.details.map(detail => `<li class="mb-2 leading-relaxed text-gray-700">${detail}</li>`).join('');
+
+          const projectCard = `
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl hover:scale-[1.005]">
+              <div class="flex flex-col md:flex-row">
+                <div class="flex-1 md:pr-10 order-2 md:order-1">
+                  <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-2">
+                    <h4 class="text-3xl font-bold text-header-dark">${project.title}</h4>
+                    <p class="text-sm text-gray-500 whitespace-nowrap pt-1">${project.date}</p>
+                  </div>
+                  <p class="text-xl font-medium text-gray-700 mb-6">${project.summary}</p>
+                  <ul class="list-none space-y-3 mb-8 pl-0 project-details">${detailsHtml}</ul>
+                  <div class="text-sm font-semibold text-gray-500 border-t pt-4 mt-6">${tagHtml}</div>
+                </div>
+                <div class="md:w-64 mt-6 md:mt-0 flex flex-col items-center justify-start space-y-4 md:space-y-6 order-1 md:order-2">
+                  <div class="w-full bg-gray-100 border border-gray-300 rounded-lg p-3 shadow-inner">
+                    <img src="${project.imageUrl}" alt="Project Diagram for ${project.title}" class="w-full h-auto object-cover rounded-md">
+                  </div>
+                  <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-accent text-white font-semibold py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 flex items-center justify-center space-x-2 transform hover:scale-[1.01] active:scale-[0.99]"><span>Demo</span><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></a>
+                  <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-header-dark text-white font-semibold py-3 rounded-lg shadow-md hover:bg-gray-700 transition duration-300 transform hover:scale-[1.01] active:scale-[0.99]">View Code</a>
+                </div>
+              </div>
+            </div>
+          `;
+          grid.innerHTML += projectCard;
+        });
+      }
+
+      window.onload = function() {
+        renderProjects();
+        createParticles();
+      };
+    </script>
+  </main>
+
+  <!-- Particles Animation Script -->
+  <script>
+    function createParticles() {
+      const container = document.getElementById('particles');
+      const particleCount = 50;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        container.appendChild(particle);
+      }
+    }
+  </script>
+</body>
+</html>
+
+</main>
+
+<script>
+  function createParticles(){ const container = document.getElementById('particles'); if(!container) return; const particleCount = 50; for(let i=0;i<particleCount;i++){ const p = document.createElement('div'); p.className='particle'; p.style.left = Math.random()*100 + '%'; p.style.top = Math.random()*100 + '%'; p.style.animationDelay = Math.random()*8 + 's'; p.style.animationDuration = (Math.random()*5+5)+'s'; container.appendChild(p); } }
+</script>
+
+</body>
+</html>

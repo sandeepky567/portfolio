@@ -1,0 +1,261 @@
+<%- include('partials/head', { title: 'About - Sandeep Kumar', extraHead: `
+  <!-- We are using custom CSS only for the dark theme -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary-color: #4ade80;
+      --secondary-color: #94a3b8;
+      --bg-dark: #0a1628;
+      --card-bg: rgba(26, 47, 74, 0.4);
+      --border-color: rgba(74, 222, 128, 0.1);
+      --code-highlight: #60a5fa;
+    }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, var(--bg-dark) 0%, #1a2f4a 50%, #0f1e33 100%); color: #fff; overflow-x: hidden; min-height: 100vh; }
+    .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    .particle { position: absolute; width: 4px; height: 4px; background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%); border-radius: 50%; animation: float 8s infinite ease-in-out; opacity: 0.6; }
+    @keyframes float { 0%,100% { transform: translateY(0) translateX(0); } 25% { transform: translateY(-30px) translateX(10px); } 50% { transform: translateY(-60px) translateX(-10px); } 75% { transform: translateY(-30px) translateX(5px); } }
+    .app-container { max-width: 1024px; margin: 0 auto; padding: 5rem 1.5rem; position: relative; z-index: 1; }
+  .hero-title { font-size: 4.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; background: linear-gradient(135deg, #fff 0%, var(--primary-color) 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-subtitle { color: var(--primary-color); }
+    .hero-text { color: var(--secondary-color); max-width: 600px; margin: 0 auto; line-height: 1.6; }
+    .profile-ring { position: relative; padding: 5px; border-radius: 50%; background: linear-gradient(135deg, #00c6ff, #0072ff); box-shadow: 0 0 0 10px rgba(0,0,0,0.2); }
+    .profile-img { display: block; border-radius: 50%; width: 100%; height: 100%; object-fit: cover; border: 5px solid var(--bg-dark); }
+    .badge { position: absolute; bottom: -5px; right: -5px; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 600; background: linear-gradient(to right, #00c6ff, #0072ff); box-shadow: 0 2px 8px rgba(0,114,255,0.5); white-space: nowrap; color: white; }
+    .section-header h2 { font-size: 3rem; font-weight: 800; color: white; margin-bottom: 1rem; }
+    .section-header p { color: var(--secondary-color); }
+    .gradient-button { background-image: linear-gradient(to right, #007bff, var(--primary-color), #0056b3); color: var(--bg-dark); transition: all 0.3s ease; font-weight: 600; border-radius: 9999px; padding: 0.75rem 2rem; display: inline-flex; align-items: center; }
+    .gradient-button:hover { opacity: 0.9; box-shadow: 0 4px 15px rgba(74,222,128,0.4); transform: translateY(-2px); }
+    .dark-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2rem; transition: transform 0.3s; }
+    .dark-card:hover { transform: translateY(-5px); border-color: rgba(74,222,128,0.3); }
+    .card-title { color: var(--primary-color); font-weight: 700; font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .card-subtitle { color: var(--secondary-color); margin-bottom: 1rem; }
+    .card-highlight-text { color: var(--primary-color); font-weight: 600; }
+    .icon-wrapper { width: 60px; height: 60px; border-radius: 50%; background: rgba(74,222,128,0.1); box-shadow: 0 5px 15px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center; border:1px solid var(--border-color); }
+    .bullet-point { display:flex; align-items:start; margin-top:0.5rem; color:white; }
+    .bullet-point::before { content:'•'; color:var(--primary-color); font-weight:900; margin-right:0.5rem; font-size:1.25rem; line-height:1.25rem; flex-shrink:0; }
+    .skill-icon-card { display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; height:80px; background:var(--card-bg); border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.05); transition:transform 0.2s; border:1px solid var(--border-color); }
+    .skill-icon-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(74,222,128,0.1); }
+    .skill-icon-text { font-size:1.25rem; font-weight:700; color:var(--primary-color); margin-top:0.25rem; }
+    .achievement-grid-item { display:flex; align-items:start; gap:1.5rem; padding:1rem 0; color:white; }
+    .achievement-title { color:var(--primary-color); font-weight:700; font-size:1.125rem; line-height:1.75rem; margin-bottom:0.25rem; }
+    .achievement-description { color:var(--secondary-color); font-size:1rem; }
+    .trophy-icon, .star-icon, .mentor-icon { width:38px; height:38px; flex-shrink:0; }
+    .trophy-icon { fill:#FFD700; } .star-icon { fill:#FFAC33; } .mentor-icon { fill:var(--primary-color); }
+    @media (max-width: 768px) { .hero-title { font-size: 3rem; } .app-container { padding: 4rem 1rem; } }
+  </style>
+  ` }) %>
+<%- include('partials/header', { page: 'about' }) %>
+
+  <!-- Animated particles container -->
+  <div class="particles" id="particles"></div>
+
+  <div id="app" class="app-container">
+        
+    <!-- Hero/About Section -->
+    <section class="flex flex-col md:flex-row items-center justify-between gap-10 text-center md:text-left">
+            
+      <!-- Left Text Content -->
+      <div class="md:w-3/5">
+        <h1 class="hero-title">
+          Hello, I'm <span>Sandeep Kumar</span>
+        </h1>
+                
+        <p class="text-xl font-semibold mb-3">
+          Full Stack Developer | <span class="hero-subtitle">Agentic AI</span>
+        </p>
+                
+        <p class="hero-text text-lg mx-auto md:mx-0">
+          A Full Stack Developer with skilled in building **scalable web applications** and integrating **AI-driven solutions**. I specialize in crafting efficient back-end systems, blending technology and innovation to deliver impactful results. Now Exploring AI Automation integrating with system.
+        </p>
+      </div>
+            
+      <!-- Right Profile Image -->
+      <div class="md:w-2/5 flex justify-center md:justify-end">
+        <div class="profile-ring w-64 h-64 md:w-80 md:h-80">
+          <!-- Placeholder Image (Replace with your actual image URL) -->
+          <img 
+            src="https://placehold.co/320x320/4ade80/0a1628?text=Profile+Pic" 
+            alt="Sandeep Kumar's Profile Picture" 
+            class="profile-img"
+            onerror="this.onerror=null; this.src='https://placehold.co/320x320/4ade80/0a1628?text=Profile+Pic'"
+          >
+          <!-- Floating Badge -->
+          <span class="badge text-sm">Full Stack Developer</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Download Section -->
+    <section class="text-center mt-20">
+      <div class="section-header">
+        <h2 class="section-title">My Resume</h2>
+        <p class="section-description">Get a detailed overview of my skills, experiences, and achievements</p>
+      </div>
+            
+      <!-- Download Button -->
+      <a href="#" download="Sandeep_Kumar_Resume.pdf" class="gradient-button shadow-xl transition duration-300 hover:scale-[1.03] active:scale-[0.98]">
+        <!-- Download Icon (SVG) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+        Download Resume
+      </a>
+    </section>
+        
+    <!-- Education / Work Experience Section -->
+    <section class="mt-20">
+      <div class="section-header">
+        <h2 class="section-title">Education / Work Experience</h2>
+        <p class="section-description">I've worked with various peoples, enhancing my skills in both teaching and practical implementation of technologies.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+        <!-- Card 1: Education (Final Year IT Student) -->
+        <div class="dark-card">
+          <div class="flex justify-center mb-6">
+            <div class="icon-wrapper">
+              <!-- Placeholder for DYP logo (Text Abbreviation) -->
+              <span class="text-3xl font-bold">DYP</span>
+            </div>
+          </div>
+
+          <p class="card-title text-center">Final Year IT Student</p>
+          <p class="card-subtitle text-center">Dr. D.Y. Patil College of Engineering, Pune</p>
+                    
+          <p class="card-highlight-text text-center text-sm mb-4">Nov 2022 - Jun 2026 (Expected)</p>
+
+          <div class="space-y-3">
+            <p class="bullet-point">Pursuing Bachelor of Engineering in Information Technology with **8.80 CGPA**.</p>
+            <p class="bullet-point">Completed strong foundation in CS Fundamentals like DSA, OOPS, DBMS, OS, CN, ML, etc.</p>
+            <p class="bullet-point">Secured **Annual Award for Academic Excellence in 2024-25** for securing maximum achievement.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Work Experience (Competitive Programming Mentor) -->
+        <div class="dark-card">
+          <div class="flex justify-center mb-6">
+            <div class="icon-wrapper">
+              <!-- Placeholder for Mentor Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+          </div>
+
+          <p class="card-title text-center">Competitive Programming Mentor</p>
+          <p class="card-subtitle text-center">CPMC - DYPCOE Pune</p>
+                    
+          <p class="card-highlight-text text-center text-sm mb-4">Jun 2024 - Jun 2025</p>
+
+          <div class="space-y-3">
+            <p class="bullet-point">**Mentored 50+ students** in solving complex programming problems using algorithms and data structures.</p>
+            <p class="bullet-point">Organized and conducted coding competitions and workshops to enhance problem-solving skills.</p>
+            <p class="bullet-point">Hosted multiple events to promote competitive programming culture in the institution.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+        
+    <!-- My Skills Section -->
+    <section class="mt-20">
+      <div class="section-header">
+        <h2 class="section-title">My Skills</h2>
+      </div>
+
+      <!-- Skills Grid -->
+      <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-6 justify-items-center">
+        <!-- Row 1: Programming/Core -->
+        <div class="skill-icon-card"><span class="skill-icon-text">C</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">C++</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">Java</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">JS</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">Python</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">AI</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">HTML</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">React</span></div>
+
+        <!-- Row 2: Backend/Database -->
+        <div class="skill-icon-card"><span class="skill-icon-text">Node</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">Exp</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">Mongo</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">PSQL</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">Redis</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">Docker</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">K8s</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">AWS</span></div>
+
+        <!-- Row 3: Tools/Other -->
+        <div class="skill-icon-card"><span class="skill-icon-text">Nginx</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">N8N</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">Redux</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">Git</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">REST</span></div>
+        <div class="skill-icon-card"><span class="skill-icon-text">SQL</span></div>
+      </div>
+    </section>
+
+    <!-- Achievement Section -->
+    <section class="mt-20">
+      <div class="section-header">
+        <h2 class="section-title">Key Achievements & Experience</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                
+        <!-- Achievement 1: HackerRank 5-Star Rating (from Resume) -->
+        <div class="achievement-grid-item">
+          <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.356 1.135-6.064 5.861 1.48 8.279L12 18.896l-7.42 4.334 1.48-8.279L.976 9.29l8.356-1.135L12 .587z"/></svg>
+          <div>
+            <p class="achievement-title">HackerRank 5-Star Rating in DSA</p>
+            <p class="achievement-description">Achieved 5-Star Rating in Data Structures and Algorithms (DSA), validating advanced problem-solving proficiency.</p>
+          </div>
+        </div>
+
+        <!-- Achievement 2: Solved Questions (from Resume) -->
+        <div class="achievement-grid-item">
+          <svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.356 1.135-6.064 5.861 1.48 8.279L12 18.896l-7.42 4.334 1.48-8.279L.976 9.29l8.356-1.135L12 .587z"/></svg>
+          <div>
+            <p class="achievement-title">120+ Competitive Programming Problems Solved</p>
+            <p class="achievement-description">Successfully solved over 120 questions on platforms like LeetCode and HackerRank, sharpening algorithmic skills.</p>
+          </div>
+        </div>
+                
+        <!-- Achievement 3: VORTEXA 2.0 Hackathon (from Resume Experience) -->
+        <div class="achievement-grid-item">
+          <svg class="trophy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 10h-2V6a4 4 0 00-8 0v4H6a2 2 0 00-2 2v6a2 2 0 002 2h12a2 2 0 002-2v-6a2 2 0 00-2-2zM8 6a2 2 0 014 0v4h-4V6zm10 12H6v-6h12v6z"/><circle cx="12" cy="15" r="3"/><path d="M12 2L10 4h4z"/></svg>
+          <div>
+            <p class="achievement-title">VORTEXA 2.0 Hackathon Participant (Sept 2025)</p>
+            <p class="achievement-description">Developed a high-accuracy EMI calculator and AI-powered financial bot, focusing on financial formulas, modular architecture, and responsive design.</p>
+          </div>
+        </div>
+
+        <!-- Achievement 4: CPMC Mentor (from Resume Leadership) -->
+        <div class="achievement-grid-item">
+          <svg class="mentor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <div>
+            <p class="achievement-title">Competitive Programming Mentorship Club (CPMC) Mentor</p>
+            <p class="achievement-description">Mentored **50+ students** in solving complex programming problems using advanced algorithms and data structures (Jun 2024 - Jun 2025).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Divider -->
+    <hr class="border-gray-700 mt-20 max-w-3xl mx-auto border-opacity-30">
+        
+  </div>
+
+  <script>
+    // JavaScript to generate floating particles
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 8 + 's';
+      particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      particlesContainer.appendChild(particle);
+    }
+  </script>
+</body>
+</html>
